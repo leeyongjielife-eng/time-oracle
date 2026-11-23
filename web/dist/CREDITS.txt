@@ -1,0 +1,9 @@
+环境音
+
+曲名：Rest Now
+作者：Eugenio Mininni
+来源：https://mixkit.co/free-stock-music/tag/meditation/
+许可：Mixkit Stock Music Free License
+许可说明：https://mixkit.co/license/#musicFree
+
+音乐默认关闭，仅在用户主动点击“环境音”后播放。

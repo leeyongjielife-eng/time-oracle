@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>时间预言签</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Kaiti SC", "STKaiti", KaiTi, "楷体", "Noto Serif SC", serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+  </style>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="bgDecor" class="bg-decor" aria-hidden="true"></div>
+
+    <header class="top-bar">
+      <div class="app-title-wrap">
+        <h1 class="app-title">时间预言签</h1>
+        <div class="top-meta" aria-label="版本与创作者">
+          <details class="release-meta">
+            <summary id="webVersion" aria-label="查看 v1.0.1 更新说明">v1.0.1</summary>
+            <div class="release-notes">
+              <strong>v1.0.1 更新</strong>
+              <ul>
+                <li>采用黑色宇宙星空主题</li>
+                <li>取签自动保存在当前浏览器</li>
+                <li>加入环境音与创作者联系方式</li>
+              </ul>
+            </div>
+          </details>
+          <a href="https://www.xiaohongshu.com/user/profile/69665ef900000000140147d1"
+            target="_blank" rel="noopener noreferrer" aria-label="小红书：疯狂拌年糕">小红书 · 疯狂拌年糕</a>
+        </div>
+      </div>
+      <button id="musicBtn" class="music-btn" type="button"
+        aria-label="开启环境音" aria-pressed="false" title="开启环境音">
+        <span class="music-status-dot" aria-hidden="true"></span>
+        <span class="music-label">环境音</span>
+        <span id="musicState" class="music-state">关闭</span>
+      </button>
+      <audio id="ambientAudio" preload="metadata" loop
+        src="./assets/audio/rest-now-eugenio-mininni.mp3"></audio>
+    </header>
+
+    <main id="viewAsk" class="view active">
+      <section class="quote-card" aria-label="道德经名言">
+        <blockquote>知人者智，自知者明。</blockquote>
+        <cite>——《道德经》</cite>
+      </section>
+      <section class="panel">
+        <label class="field-label" for="questionInput">你想问什么？</label>
+        <textarea id="questionInput" class="question-input" rows="3" maxlength="200"
+          placeholder="请写下一个具体的问题"></textarea>
+        <p class="hint">按提交时的秒数取签 · 自动保存 · 重问需确认</p>
+        <button id="submitBtn" class="btn btn-primary" type="button">提交取签</button>
+      </section>
+      <p id="storageStatus" class="storage-status" role="status"></p>
+      <p class="usage-note">仅供娱乐与自我记录，不预测现实，不作为医疗、法律、投资或重大决策依据。记录仅存于当前浏览器，清理数据或更换设备、网址可能丢失。</p>
+      <section id="resultArea" class="result-area"></section>
+      <footer class="creator-footer" aria-label="联系创作者">
+        <p class="creator-heading">联系创作者</p>
+        <a class="creator-primary" href="https://www.xiaohongshu.com/user/profile/69665ef900000000140147d1"
+          target="_blank" rel="noopener noreferrer" aria-label="打开小红书：疯狂拌年糕">小红书 · 疯狂拌年糕</a>
+        <nav class="creator-links" aria-label="创作者其他联系方式">
+          <a href="https://www.threads.com/@wingkit26go" target="_blank" rel="noopener noreferrer" aria-label="打开 Threads 主页">Threads</a>
+          <a href="https://x.com/wingwhoever" target="_blank" rel="noopener noreferrer" aria-label="打开 X 主页">X</a>
+          <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=leeyongjielife%40gmail.com" target="_blank" rel="noopener noreferrer" aria-label="打开 Gmail 给作者发邮件">Gmail</a>
+        </nav>
+        <p class="web-edition">时间预言签 · 网页版 v1.0.1</p>
+      </footer>
+    </main>
+
+    <main id="viewRecords" class="view">
+      <h2 class="view-title">我的记录</h2>
+      <div id="recordsList" class="list"></div>
+    </main>
+
+    <main id="viewManifested" class="view">
+      <h2 class="view-title">已实现 <span id="manifestedCount" class="count-pill">0</span></h2>
+      <div id="manifestedList" class="list"></div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" type="button" data-view="viewAsk">取签</button>
+      <button class="nav-btn" type="button" data-view="viewRecords">我的记录</button>
+      <button class="nav-btn" type="button" data-view="viewManifested">已实现</button>
+    </nav>
+
+    <div id="modalRoot" class="modal-root hidden">
+      <div class="modal-mask"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <div id="modalBody" class="modal-body"></div>
+        <div id="modalActions" class="modal-actions"></div>
+      </div>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
+  </div>
+  <script src="./assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+._*
+
+# Local release and hosting metadata
+.release-metadata/
+.local-backups/
+web/.openai/
+
+# Generated delivery archives
+*.zip
+*.tar.gz
+
+# Browser-regression screenshots
+tests/*.png
+test-results/
+playwright-report/
